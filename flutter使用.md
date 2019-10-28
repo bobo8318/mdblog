@@ -172,10 +172,29 @@
 
 * 常用示例
   
+  * 客户端打包
+  
+    * 生成 keystore
+  
+      > keytool -genkey -v -keystore ~/key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias key
+      
+  
+  * 静态文件引入
+  
+    > pubspec.yaml文件中声明
+    >
+    >  assets ：
+    >
+    > ​	-images/index.jpg
+    >
+    > // 使用
+    >
+    > Image.asset('images/index.jpg')
+  
   * 导航
-    
+  
     * 一般导航
-     ```
+   ```
     Navigator.push(context,new  MaterialPageRoute(
                   builder:(context) =>new SecondScreen())
                 );
@@ -193,9 +212,9 @@
             this.maintainState = true,//默认情况下，当入栈一个新路由时，原来的路由仍然会被保存在内存中，如果想在路由没用的时候释放其所占用的所有资源，可以设置maintainState为false。
             bool fullscreenDialog = false,//表示新的路由页面是否是一个全屏的模态对话框，在iOS中，如果fullscreenDialog为true，新页面将会从屏幕底部滑入（而不是水平方向）。
           })
-
+  
     ```
-
+  
     * Navigator:是一个路由管理的widget，它通过一个栈来管理一个路由widget集合。通常当前屏幕显示的页面就是栈顶的路由。**Navigator**提供了一系列方法来管理路由栈，在此我们只介绍其最常用的两个方法：
     
       * ### Future push(BuildContext context, Route route)
@@ -299,7 +318,7 @@
       >    Navigator.of(context).push(MaterialPageRoute(builder:(BuildContext context){
       >      return EachView('New Page');
       >    }));
-      >  },
+    >  },
       >  tooltip: 'Increment',
       >  child: Icon(
       >    Icons.add,
@@ -309,9 +328,23 @@
       >
       > // 与底部融合
       >
-      > 
       > floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked
-      > 
+      
+    * 带参数跳转
+    
+      >_navigateToXiaoJieJie(BuildContext context) async{ //async是启用异步方法
+      >	final result = await Navigator.push(//等待
+      >		context, 
+      >		MaterialPageRoute(builder: (context)=> XiaoJieJie())
+      >	);
+      >	Scaffold.of(context).showSnackBar(SnackBar(content:Text('$result')));
+  >	}
+      >
+      >}
+      >
+      >// 返回数据
+      >
+      >Navigator.pop(context,'大长腿:1511009999');
     
   * 布局
   
@@ -338,6 +371,12 @@
     * RaisedButton(onpress:(){},child:Text('finished'))
   
   * showDialog()
+  
+  * SnackBar:
+  
+    > 
+    > Scaffold.of(context).showSnackBar(SnackBar(content:Text('$result')));
+    > 
   
   * Future:`return await ...`的时候，实际上返回的是一个延迟计算的`Future`对象
   
