@@ -190,10 +190,189 @@
     > // 使用
     >
     > Image.asset('images/index.jpg')
-  
+    > 
+    
+  * 布局
+    
+      * Row
+      
+      ```text
+      import 'package:flutter/material.dart';
+      void main () => runApp(MyApp());
+      
+      class MyApp extends StatelessWidget{
+        @override
+        Widget build(BuildContext context ){
+            return MaterialApp(
+              title:'ListView widget',
+            
+              home:Scaffold(
+                appBar:new AppBar(
+                  title:new Text('水平方向布局'),
+                ),
+                body:new Row(
+                  children: <Widget>[
+                   new RaisedButton(
+                      onPressed: (){
+                        
+                      },
+                      color:Colors.redAccent,
+                      child:new Text('红色按钮')
+                  ),
+                  Expanded(child:new RaisedButton(
+                      onPressed: (){
+                         
+                        },
+                        color:Colors.orangeAccent,
+                        child: new Text('黄色按钮'),
+                      )
+                    
+                    ),
+                  new RaisedButton(
+                      onPressed: (){
+                      },
+                      color:Colors.pinkAccent,
+                      child:new Text('粉色按钮')
+                    )
+                  ],
+                )
+              ),
+            );
+        }
+      }
+      ```
+      
+      * Column
+      
+      ```text
+      import 'package:flutter/material.dart';
+      void main () => runApp(MyApp());
+      
+      class MyApp extends StatelessWidget{
+        @override
+        Widget build(BuildContext context ){
+            return MaterialApp(
+              title:'ListView widget',
+              
+              home:Scaffold(
+                appBar:new AppBar(
+                  title:new Text('垂直方向布局'),
+                ),
+                body:Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                   Center(child:Text('I am JSPang')),
+                   Center(child:Text('my website is jspang.com')),
+                   Center(child:Text('I love coding'))
+                  ],
+                )
+              ),
+            );
+        }
+      }
+      CrossAxisAlignment.star：居左对齐。
+      CrossAxisAlignment.end：居右对齐。
+      CrossAxisAlignment.center：居中对齐。
+      ```
+      
+      * Stack
+      
+      ```text
+      import 'package:flutter/material.dart';
+      void main () => runApp(MyApp());
+      
+      class MyApp extends StatelessWidget{
+        @override
+        Widget build(BuildContext context ){
+            var stack = new Stack(
+              
+              children: <Widget>[
+                new CircleAvatar(
+                  backgroundImage: new NetworkImage('http://jspang.com/static//myimg/blogtouxiang.jpg'),
+                  radius: 100.0,
+                ),
+                new Positioned(
+                  top:10.0,
+                  left:10.0,
+                  child: new Text('JSPang.com'),
+                ),
+                new Positioned(
+                  bottom:10.0,
+                  right:10.0,
+                  child: new Text('技术胖'),
+                )
+              ],
+            );
+      
+      
+            return MaterialApp(
+              title:'ListView widget',
+              home:Scaffold(
+                appBar:new AppBar(
+                  title:new Text('层叠布局'),
+                ),
+                body:Center(child:stack),
+              ),
+            );
+        }
+      }
+      ```
+      
+      * ListTitle
+      
+      ```text
+      import 'package:flutter/material.dart';
+      void main () => runApp(MyApp());
+      
+      class MyApp extends StatelessWidget{
+        @override
+        Widget build(BuildContext context ){
+            var card = new Card(
+               child: Column(
+                 children: <Widget>[
+                   ListTile(
+                     title:new Text('吉林省吉林市昌邑区',style: TextStyle(fontWeight: FontWeight.w500),),
+                     subtitle: new Text('技术胖:1513938888'),
+                     leading: new Icon(Icons.account_box,color: Colors.lightBlue,),
+                   ),
+                   new Divider(),
+                    ListTile(
+                     title:new Text('北京市海淀区中国科技大学',style: TextStyle(fontWeight: FontWeight.w500),),
+                     subtitle: new Text('胜宏宇:1513938888'),
+                     leading: new Icon(Icons.account_box,color: Colors.lightBlue,),
+                   ),
+                   new Divider(),
+                    ListTile(
+                     title:new Text('河南省濮阳市百姓办公楼',style: TextStyle(fontWeight: FontWeight.w500),),
+                     subtitle: new Text('JSPang:1513938888'),
+                     leading: new Icon(Icons.account_box,color: Colors.lightBlue,),
+                   ),
+                   new Divider(),
+                   
+                 ],
+               ),
+            
+            );
+      
+      
+            return MaterialApp(
+              title:'ListView widget',
+              home:Scaffold(
+                appBar:new AppBar(
+                  title:new Text('卡片布局'),
+                ),
+                body:Center(child:card),
+              ),
+            );
+        }
+      }
+      ```
+    
   * 导航
   
     * 一般导航
+  
    ```
     Navigator.push(context,new  MaterialPageRoute(
                   builder:(context) =>new SecondScreen())
@@ -201,8 +380,8 @@
                 
     Navigator.pop(context);
     
-     ```
-    
+   ```
+  
       * MaterialPageRoute：MaterialPageRoute 是Material组件库的一个Widget，承自PageRoute类，它可以针对不同平台，实现与平台页面切换动画风格一致的路由切换动画
   
     ```
@@ -224,7 +403,7 @@
     * 路由表：Map<String,  WidgetBuidler> routes;
     
       * 注册：
-    
+      
         > return new MaterialApp(
         > title: 'Flutter Demo',
         > theme: new ThemeData(
@@ -329,7 +508,7 @@
       > // 与底部融合
       >
       > floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked
-      
+  
     * 带参数跳转
     
       >_navigateToXiaoJieJie(BuildContext context) async{ //async是启用异步方法
@@ -345,7 +524,7 @@
       >// 返回数据
       >
       >Navigator.pop(context,'大长腿:1511009999');
-    
+  
   * 布局
   
     * Column 列布局
