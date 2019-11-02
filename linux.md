@@ -68,7 +68,16 @@ Summary:linux知识记录
   >
   > ps -ef|grep redis //知道服务名称
 
-
+  * 权限
+   * Centos7 普通用户加入sudo组
+   > whereis sudoers//查找
+   > vi /etc/sudoers //编辑
+   > root ALL = (ALL) ALL //下面添加需要添加的用户
+  
+  * centos 网络设置
+    > ip addr 查看IP地址
+    > vi /etc/sysconfig/network-scripts/ifcfg-eth0  //网卡配置地址文件
+    > ONBOOT=yes   #系统启动时是否激活此设备 默认不开启 需要开启一下
 
   * 常见故障：
   
