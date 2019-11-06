@@ -7,6 +7,12 @@ Summary:linux知识记录
 
 ### linux
 
+* 常用软件安装
+
+  * firefox
+
+    >  yum -y install firefox 
+
 * centos
 
   * 环境变量设置
