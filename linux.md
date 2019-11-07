@@ -15,20 +15,36 @@ Summary:linux知识记录
 
 * centos
 
-  * 环境变量设置
+  * 后台运行java程序
 
+  	> nohup java -jar xx.jar >/dev/null  & 
+    >
+    >  \>/dev/null  的作用是输出到空洞  \>/xxx/yyy.out 可以输出到文件
+    >
+    >  & 代表在后台运行 
+    >
+    >  nohup 意思是不挂断运行命令,当账户退出或终端关闭时,程序仍然运行， 缺省情况下该作业的所有输出被重定向到nohup.out的文件中 
+    >
+    > //关闭后台程序
+    >
+    >  ps aux 查看后台运行程序
+    >
+    >   kill -9 PID 结束程序
+    
+  * 环境变量设置
+  
     > sudo vi /etc/profile
     >
     > 
     >
     > export BASE_PATH = /usr/local/bin
-    >
+  >
     > export PATH=$PATH:$BASE_PATH 
     >
     > 
     >
     > source /etc/profile
-
+  
   * 开启防火墙及特定端口
   
     > firewall-cmd --state //查看防火墙状态
@@ -54,20 +70,20 @@ Summary:linux知识记录
     > firewall-cmd --reload //重新加载防火墙策略
     >
     > 
-    >
+  >
     > netstat -ntlp
     > 或：firewall-cmd --list-ports //查看端口开放效果
   
-  * 查看端口占用情况
+* 查看端口占用情况
   
-
+  
   > netstat -lnp|grep 8080 
-  > netstat -antup |grep 2711 // 通过进程查看端口
+> netstat -antup |grep 2711 // 通过进程查看端口
   >
 
-  
+
   * 进程操作
-  
+
 
   > ps 1777 //查看进程信息
   > kill -9 [PID]  #-9 表示强迫进程立即停止
@@ -78,13 +94,13 @@ Summary:linux知识记录
    * Centos7 普通用户加入sudo组
    > whereis sudoers//查找
    > vi /etc/sudoers //编辑
-   > root ALL = (ALL) ALL //下面添加需要添加的用户
-  
+ > root ALL = (ALL) ALL //下面添加需要添加的用户
+
   * centos 网络设置
     > ip addr 查看IP地址
     > vi /etc/sysconfig/network-scripts/ifcfg-eth0  //网卡配置地址文件
     > ONBOOT=yes   #系统启动时是否激活此设备 默认不开启 需要开启一下
-
+  
   * 常见故障：
   
     * su:鉴定故障
