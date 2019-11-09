@@ -1,3 +1,10 @@
+title:机器学习知识记录
+date: 2019-11-8
+Category: 机器学习
+Tags: 机器学习,python,数据分析
+Authors: openui
+Summary:机器学习知识记录，数据分析
+
 #### chapter 1
 
 #### chapter2 python base
@@ -85,7 +92,7 @@
      > plt.figure(figsize = (7,5))
 
    * pandas
-   
+  
      > base 
      >
      > sum mean var std corr  cov skew/kurt
@@ -123,11 +130,11 @@
      > plt.axis('equal')
      >
      > plt.show();
-   
+  
    *  StatsModels
-   
+  
    *  Scikit-Learn
-   
+  
    *  Keras
-   
+  
    *  Gensim

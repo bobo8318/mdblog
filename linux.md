@@ -34,15 +34,8 @@ Summary:linux知识记录
   * 环境变量设置
   
     > sudo vi /etc/profile
-    >
-    > 
-    >
     > export BASE_PATH = /usr/local/bin
-  >
     > export PATH=$PATH:$BASE_PATH 
-    >
-    > 
-    >
     > source /etc/profile
   
   * 开启防火墙及特定端口
@@ -65,12 +58,8 @@ Summary:linux知识记录
     > --add-port=80/tcp  #添加端口，格式为：端口/通讯协议
     > --permanent   #永久生效，没有此参数重启后失效
     >
-    > 
-    >
     > firewall-cmd --reload //重新加载防火墙策略
     >
-    > 
-  >
     > netstat -ntlp
     > 或：firewall-cmd --list-ports //查看端口开放效果
   
@@ -78,33 +67,31 @@ Summary:linux知识记录
   
   
   > netstat -lnp|grep 8080 
-> netstat -antup |grep 2711 // 通过进程查看端口
-  >
+  > netstat -antup |grep 2711 // 通过进程查看端口
+  > (yum -y install net-tools)
+  > netstat -antup |grep 2711 // 通过进程查看端口
 
 
-  * 进程操作
-
-
+* 进程操作
   > ps 1777 //查看进程信息
   > kill -9 [PID]  #-9 表示强迫进程立即停止
-  >
   > ps -ef|grep redis //知道服务名称
 
   * 权限
    * Centos7 普通用户加入sudo组
    > whereis sudoers//查找
    > vi /etc/sudoers //编辑
- > root ALL = (ALL) ALL //下面添加需要添加的用户
+   > root ALL = (ALL) ALL //下面添加需要添加的用户
 
   * centos 网络设置
+    
     > ip addr 查看IP地址
     > vi /etc/sysconfig/network-scripts/ifcfg-eth0  //网卡配置地址文件
     > ONBOOT=yes   #系统启动时是否激活此设备 默认不开启 需要开启一下
-  
+
   * 常见故障：
   
     * su:鉴定故障
-    
       >  sudo passwd root
       > 输入当前用户密码，然后输入设置的root密码
 

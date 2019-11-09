@@ -1,3 +1,10 @@
+title:flutter使用记录
+date: 2019-11-9
+Category: 移动开发
+Tags: flutter,移动开发,android,ios
+Authors: openui
+Summary:flutter使用记录
+
 重要基础内容
 
 * 风格：material.dart   cupertino.dart

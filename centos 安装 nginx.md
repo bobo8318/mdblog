@@ -1,72 +1,10 @@
-title:nginx 使用记录
-date: 2019-9-22
-Category: 工具
-Tags: 工具,nginx,linux
+title:centos安装nginx
+date: 2019-11-9
+Category: linux
+Tags: linux,centos,nginx
 Authors: openui
-Summary: nginx 使用记录
+Summary:cengtos下nginx安装
 
-###  windows 下 nginx 使用
-
-* 下载地址：http://nginx.org/en/download.html
-
-* 运行命令
-
-  > start nginx //运行
-  >
-  > nginx -t 查看配置状态
-  >
-  > nginx -s stop/quiet 快速/有序 停止
-  >
-  > nginx -s reload 重载配置
-  >
-  > nginx -h 显示帮助信息
-
-* 网站配置
-
-* win下打包为服务
-
-  > Windows Service Wrapper 小工具 下载地址如下：
-  >
-  > http://repo.jenkins-ci.org/releases/com/sun/winsw/winsw/1.18/winsw-1.18-bin.exe
-  >
-  > 下载后放在nginx目录下，并修改名字为nginx-service.exe
-  > 创建配置文件nginx-service.exe.config 和 nginx-service.xml
-  >  nginx-service.exe install  安装服务
-
-  * nginx-service.xml的内容如下：
-
-  > <service>
-  ><id>nginx</id>
-  > <name>Nginx Service</name>
-  >   <description>High Performance Nginx Service</description>
-  >   <logpath>C:\nginx-1.14.0\logs</logpath>
-  >   <log mode="roll-by-size">
-  >    <sizeThreshold>10240</sizeThreshold>
-  >    <keepFiles>8</keepFiles>
-  >    </log>
-  >    <executable>C:\nginx-1.14.0\nginx.exe</executable>
-  >   <startarguments>-p C:\nginx-1.14.0</startarguments>
-  >   <stopexecutable>C:\nginx-1.14.0\nginx.exe</stopexecutable>
-  >   <stoparguments>-p C:\nginx-1.14.0 -s stop</stoparguments>
-  >   </service>
-
-  * nginx-service.exe.config内容如下：
-
-  > <configuration>
-  > <startup>
-  >  <supportedRuntime version="v2.0.50727" />
-  >    <supportedRuntime version="v4.0" />
-  >    </startup>
-  >    <runtime>
-  >    <generatePublisherEvidence enabled="false"/> 
-  >   </runtime>
-  >    </configuration>
-
-  cmd命令输入 sc delete 服务名 可以删除这个服务 powershell下不行
-
-
-
-### centos下安装使用
 * 查看是否已安装过
 
   > find -name nginx 
@@ -76,6 +14,7 @@ Summary: nginx 使用记录
 * 下载
 
   >   wget http://nginx.org/download/nginx-1.7.4.tar.gz  
+  >
   >  yum -y install wget  //安装wget
 
 * 解压
@@ -165,3 +104,6 @@ Summary: nginx 使用记录
   > systemctl enable nginx.service          设置开机自启动
   >
   > systemctl disable nginx.service         停止开机自启动
+
+
+

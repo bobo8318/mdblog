@@ -1,3 +1,10 @@
+title:HypeV使用
+date: 2019-11-9
+Category: 虚拟化
+Tags: 虚拟化,windows,hyperv
+Authors: openui
+Summary:hyperv使用记录
+
 ### HyperV
 
 * 介绍
