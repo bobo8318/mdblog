@@ -62,18 +62,20 @@ Summary:linux知识记录
   
 
   > netstat -lnp|grep 8080 
-  > netstat -antup |grep 2711 // 通过进程查看端口
   >
-
+  > (yum -y install net-tools)
+>
+  > netstat -antup |grep 2711 // 通过进程查看端口
   
-  * 进程操作
   
-
+* 进程操作
+  
+  
   > ps 1777 //查看进程信息
   > kill -9 [PID]  #-9 表示强迫进程立即停止
-  >
+>
   > ps -ef|grep redis //知道服务名称
-
+  
   * 权限
    * Centos7 普通用户加入sudo组
    > whereis sudoers//查找
@@ -82,9 +84,9 @@ Summary:linux知识记录
   
   * centos 网络设置
     > ip addr 查看IP地址
-    > vi /etc/sysconfig/network-scripts/ifcfg-eth0  //网卡配置地址文件
+  > vi /etc/sysconfig/network-scripts/ifcfg-eth0  //网卡配置地址文件
     > ONBOOT=yes   #系统启动时是否激活此设备 默认不开启 需要开启一下
-
+  
   * 常见故障：
   
     * su:鉴定故障
