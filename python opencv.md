@@ -13,6 +13,16 @@
   > conda create -n Python3CV python=3.5 --file requirements.txt
 
 ```
-D:\Anaconda) C:\Users\Jackko\Documents>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ (D:\Anaconda) C:\Users\Jackko\Documents>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/ (D:\Anaconda) C:\Users\Jackko\Documents>conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ (D:\Anaconda) C:\Users\Jackko\Documents>conda config --set show_channel_urls yes
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --set show_channel_urls yes
+
+//C:\Users\My\.condarc
+channels:
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/
+  - https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
+ssl_verify: true
+show_channel_urls: true
+
 ```
 
