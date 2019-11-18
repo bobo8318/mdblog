@@ -52,3 +52,21 @@ Summary:node vue 安装使用
   * 无法加载文件 C:\Users\hp\AppData\Roaming\npm\cnpm.ps1，因为在此系统上禁止运行脚本。
   
     >  powershell 运行：set-ExecutionPolicy RemoteSigned 
+  
+  * chrome vuejs devtools 插件的安装
+  
+    * github 上下载
+  
+      >  https://github.com/vuejs/vue-devtools 
+      >
+      >  git clone https://github.com/vuejs/vue-devtools.git                           `    
+  
+    * 安装依赖包
+  
+      >  npm install (cnpm) 下载依赖
+      >
+      >  npm run build  安装 
+      >
+      > （ npm install webpack-cli -g  需要先全局安装这个
+      >
+      > npm install  @vue-devtools/build-tools   -g）

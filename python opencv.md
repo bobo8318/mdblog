@@ -10,7 +10,7 @@
 
 * create env
 
-  > conda create -n Python3CV python=3.5 --file requirements.txt
+  > conda create -n Python3CV python=3.6--file requirements.txt
 
 ```
 conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
@@ -25,4 +25,3 @@ ssl_verify: true
 show_channel_urls: true
 
 ```
-
