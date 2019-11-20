@@ -25,7 +25,7 @@
     show_channel_urls: true
     ```
 
-### 
+### 2.base 
 
 * plt
 
@@ -75,3 +75,27 @@
     ```
   
     
+
+### 3.数据分析流程
+
+* 数据预处理
+
+  * 特征标准化
+
+    > form sklearn import preprocessing
+    >
+    > X_scaled = preprocessing.scale(x)//每行均值等于或接近0
+
+  * 特征归一化 拥有单位范数的过程
+
+    > //L1范数 曼哈顿距离
+    >
+    > x_normalized_l1 = preprocessing.normalize(x,norm='l1')
+    >
+    > // L2范数 欧氏距离
+    >
+    > x_normalized_l2 = preprocessing.normalize(x, norm='l2')
+    >
+    > 
+
+  * 数据降维 主成分分析PCA
