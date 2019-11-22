@@ -99,3 +99,111 @@
     > 
 
   * 数据降维 主成分分析PCA
+
+* 文本特征表示
+
+  > from sklearn.feature_extraction.text import CountVevtorizer
+  >
+  > vec = CountVevtorizer()
+  >
+  > x = vec.fit_transform(sample)
+  >
+  > x.toarray()# 默认为稀疏矩阵，变为常规矩阵
+  >
+  > vec.get_feature_names()
+  >
+  > #TF-IDF 通过衡量单词在整个数据中出现的频率来计算权重
+  >
+  > from  sklearn.feature_extraction.text import TfidfVevtorizer
+  >
+  > vec = TfidfVevtorizer()
+
+* 图像表示
+
+  * RGB色彩空间编码图像
+
+    > import cv2
+    >
+    > import matplotlib.pyplot as plt
+    >
+    > img = cv2.imread('data/lena.jpg')
+    >
+    > img_rgb = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+    >
+    > 
+    >
+    > plt.figure(figsize=(12,6))
+    >
+    > plt.subplot(121)
+    >
+    > plt.imshow(img)
+    >
+    > img.subplot(122)
+    >
+    > plt.imshow(img_rgb)
+    >
+    > plt.show()
+
+  * HSV & HLS
+
+    > cv2.COLOR_BGR2HSV
+    >
+    > cv2.COLOR_BGR2HLS
+    >
+    > cv2.COLOR_BGR2LAB
+    >
+    > cv2.COLOR_BGR2YUV
+
+  * 角点检测
+
+    * Harris角点检测:仅可以处理灰度图像
+
+      > img_gray = cv2.cvtColo(img_bgr, cv2.COLOR_BGR2GRAY)
+      >
+      > corners = cv2.cornerHarris(img_gray, 2, 3, 0.04)# (灰度图像, 角点检测的像素领域大小, 边缘检测的孔径参数, harris检测器自有参数)
+      >
+      > plt.imshow(corners, cmap='gray')
+
+    * Shi-Tomasi角点检测
+
+      > cv2.goodFearuresToTrack()
+
+    * 尺度不变特征变换
+    
+      > sift = cv2.xfeatures2d.SIFT_create()
+      >
+      > kp = sift.detect(img_bgr) #检测
+      >
+      > 
+      >
+      > import numpy as np
+      >
+      > img_kp = np.zeros_like(img_bgr)
+      >
+      > img_kp = cv2.drawKeypoints(img_bgr, kp, img_kp, flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
+      >
+      > plt.imshow(imgkp)
+      >
+      > #计算特征描述
+      >
+      > kp, des = sift.compute(img_bgr, kp)
+      >
+      > kp2, des2 = sift.detectAndCompute(img_bgr, None)
+      >
+      > #判断两个方法的结果是否相同
+      >
+      > np.allclose(des, des2)		
+    
+    * 加强健壮特征:SURF
+    
+      > surf = cv2.xfeatures2d.SURF_create()
+      >
+      > kp = surf.detect(img_bgr)
+      >
+      > 
+      >
+      > cv2.ORB 免费的替代方案
+
+### 4. 决策树
+
+​	
