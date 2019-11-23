@@ -206,4 +206,54 @@
 
 ### 4. 决策树
 
-​	
+* data pre 
+
+  > from sklearn.feature_extraction import DictVectorizer # One-Hot 编码
+  >
+  > vec = DictVectorizer(sparse=False) #sparse=False意思是不产生稀疏矩阵
+  >
+  > data_pre = vec.fit_transform(data)
+  >
+  > # 
+  >
+  > data_pre = np.array(data_pre, dtype=np.float32)
+
+* split data
+
+  > import numy as np 
+  >
+  > from sklearn.model_selection as ms
+  >
+  > x_train, x_test, y_train, y_test = ms.train_test_split(data_pre, target, test_size=5, random_state = 42)
+
+* create decide tree
+
+  > import cv2
+  >
+  > dtree = cv2.ml.dtree_create()
+  >
+  > 
+
+* train and predict
+
+  > dtree.train(x_train, cv2.ml.ROW_SAMPLE, y_train) #  cv2.ml.ROW_SAMPLE / cv2.ml.COL_SAMPLE 
+  >
+  > y_pred = dtree.predict(x_test)
+
+* test
+
+  > from sklearn import metrics
+  >
+  > metrics.accuracy_score(y_test, y_pred)
+
+* show tree
+
+  > from sklearn import tree
+  >
+  > dtc = tree.DecisionTreeClassifier()
+  >
+  > dtc.fit(x_train, y_train)
+  >
+  > dtc.score(x_test, y_test)
+  >
+  > conda install graphviz
