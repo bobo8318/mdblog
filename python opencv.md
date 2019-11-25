@@ -248,12 +248,63 @@
 
 * show tree
 
-  > from sklearn import tree
+  > from sklearn import tree # 使用sklearn构造决策树
   >
-  > dtc = tree.DecisionTreeClassifier()
+  > dtc = tree.DecisionTreeClassifier() #空的决策树
   >
   > dtc.fit(x_train, y_train)
   >
   > dtc.score(x_test, y_test)
   >
   > conda install graphviz
+  >
+  > #导出决策树
+  >
+  > with open("tree.dot", "w"):
+  >
+  > ​	f = tree.export_graphviz(clf, out_file=f)
+
+* 决策规则
+
+  > dtc = tree.DecisionTreeClassifier(criterion='entropy ') 
+
+  * gini 基尼 
+  * entropy 信息熵
+
+* 决策树复杂度
+
+  > DecisionTreeClassifier参数
+  >
+  > max_depth
+  >
+  > max_leaf_nodes
+  >
+  > min_samples_split 设置一节点中的最小数据点来持续分割
+
+* 决策树进行回归
+
+  > tree.DecisionTreeRegressor()
+
+### 5.SVM
+
+* 生成模拟数据
+
+  > x,y = datasets.make_classification(n_samples=100, n_features=2, n_redundant=0, n_classes=2, random_state=7816)
+  >
+  > 
+  >
+  > plt.scatter(x[:, 0], x[:, 1], c=y, s=100)
+  >
+  > plt.xlabel('x values')
+  >
+  > plt.ylabel('y values')
+  >
+  > plt.show()
+
+* 数据预处理
+
+  > x = x.astype(np.float32)
+  >
+  > y = y*2 - 1 # -1 或 1
+  >
+  > x_train, x_test, y_train, y_test = ms.train_test_split(x, y, test_size=0.2, random_state=42)
