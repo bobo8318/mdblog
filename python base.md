@@ -107,6 +107,10 @@ Summary:python base
   >
   > word[:2]# 前两个字符
   > word[2:]# 除前两个字符串外的部分
+  >
+  > //字符串替换
+  >
+  > str.replace(old, new[, max])
 
 * python获取当前时间的用法
 
