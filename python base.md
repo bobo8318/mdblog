@@ -125,3 +125,22 @@ Summary:python base
   >  os.chdir () # 改变当前工作目录
   >
   >   os.getcwd()  #获取当前工作目录
+
+* 读取配置文件
+
+  
+  > //config.ini
+  > 
+  > [Path]
+  > 
+  > path = G:\test\openui_ui\content
+  
+  
+  
+  
+  > import configparser
+  > 
+  > cf = configparser.ConfigParser()
+  > cf.read("E:\Crawler\config.ini")
+  
+  
