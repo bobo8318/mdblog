@@ -60,3 +60,13 @@ class LoggingEventHandler(FileSystemEventHandler):# watchdog.events.LoggingEvent
   >  watchdog.observers.Observer(timeout=1) 
   >
   >  observer.schedule(event_handler, path, recursive=False) # 控指定路径path，该路径触发任何事件都会调用event_handler来处理，如果path是目录，则recursive=True则会递归监控该目录的所有变化。 
+  >
+  > 
+  >
+  > observer.add_handler_for_watch(event_handler, watch)
+  >  添加一个新的事件处理器到watch中，watch是ObservedWatch()类或其子类的实例
+  >
+  >  
+  >
+  > observer.remove_handler_for_watch(event_handler, watch)
+  > 从watch中移除一个事件处理器 
