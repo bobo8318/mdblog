@@ -70,3 +70,54 @@ Summary:python base
   
   > from mypackage.subpackage_1 import test11
 
+* 项目打包发布
+
+  > conda install  pyinstaller
+  >
+  > pyinstaller -F 文件名.py 
+  >
+  > -F : 打包成单个可执行文件
+  > -w : 打包之后运行程序,只有窗口不显示命令行
+  > -c : 打包之后运行程序,显示命令行
+
+* 执行系统命令
+
+  >  os.system(cmd): 返回值是脚本的退出状态码，只会有0(成功),1,2 
+  >  os.popen(cmd): 返回脚本执行的输出内容作为返回值 
+  >
+  >  md5_value =os.popen('md5sum /root/all.sql')
+  >  print(md5_value.read().split()[0])
+
+* 字符串：
+
+  > if str1 in str2:
+  >
+  > 　　包含的话，True
+  >
+  > if str1.find(str2)>=0:
+  >
+  > 　　包含的话，返回第一次出现的位置，没有的话为负数
+  >
+  > 
+  >
+  > z = "{0}{1}".format(x, y) 
+  > z = "%s%s" % (x, y) 
+  >
+  > //字符串索引
+  >
+  > word[:2]# 前两个字符
+  > word[2:]# 除前两个字符串外的部分
+
+* python获取当前时间的用法
+
+  >  import datetime 
+  >
+  >  now_time = datetime.datetime.now() 
+  >
+  >  “2016-09-21”：datetime.datetime.now().strftime('%Y-%m-%d') 
+
+* 常用命令
+
+  >  os.chdir () # 改变当前工作目录
+  >
+  >   os.getcwd()  #获取当前工作目录
