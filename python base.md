@@ -85,6 +85,14 @@ Summary:python base
   >  os.system(cmd): 返回值是脚本的退出状态码，只会有0(成功),1,2 
   >  os.popen(cmd): 返回脚本执行的输出内容作为返回值 
   >
+  >  retcode = subprocess.call("cd /data/xxx-salt/ && git pull", shell=True)#创建子进程执行外部程序
+  >
+  >  
+  >
+  >   shell=True参数会让subprocess.call接受字符串类型的变量作为命令，并调用shell去执行这个字符串，当shell=False是，subprocess.call只接受数组变量作为命令，并将数组的第一个元素作为命令，剩下的全部作为该命令的参数。 
+  >
+  >  
+  >
   >  md5_value =os.popen('md5sum /root/all.sql')
   >  print(md5_value.read().split()[0])
 
@@ -139,8 +147,20 @@ Summary:python base
   
   
   > import configparser
-  > 
+  >
   > cf = configparser.ConfigParser()
-  > cf.read("E:\Crawler\config.ini")
+  > cf.read("E:\Crawler\config.ini")  # 读取配置文件，如果写文件的绝对路径，就可以不用os模块
+  >
+  > secs = cf.sections()  # 获取文件中所有的section(一个配置文件中可以有多个配置，如数据库相关的配置，邮箱相关的配置，每个section由[]包裹，即[section])，并以列表的形式返回
+  > print(secs)
+  >
+  > options = cf.options("Mysql-Database")  # 获取某个section名为Mysql-Database所对应的键
+  > print(options)
+  >
+  > items = cf.items("Mysql-Database")  # 获取section名为Mysql-Database所对应的全部键值对
+  > print(items)
+  >
+  > host = cf.get("Mysql-Database", "host")  # 获取[Mysql-Database]中host对应的值
+  > print(host)
   
   
