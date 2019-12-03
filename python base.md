@@ -5,6 +5,12 @@ Tags: python
 Authors: openui
 Summary:python base
 
+* 设置位数
+
+  > set CONDA_FORCE_32BIT=1是切换到32位；
+  >
+  > set CONDA_FORCE_32BIT= 是切换到64位
+
 * create env
 
   > conda create --name python36 python=3.6

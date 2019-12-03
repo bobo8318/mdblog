@@ -308,3 +308,15 @@
   > y = y*2 - 1 # -1 或 1
   >
   > x_train, x_test, y_train, y_test = ms.train_test_split(x, y, test_size=0.2, random_state=42)
+
+### 6.贝叶斯
+
+* 使用sklearn
+
+  > from sklearn import naive_bayes
+  >
+  > model_naive = naive_bayes.GaussianNB()
+  >
+  > model_naive.fit(x_train, y_train)
+
+* 
