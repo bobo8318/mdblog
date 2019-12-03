@@ -16,6 +16,26 @@ Summary:python base
   > conda create --name python36 python=3.6
   > conda create -n python2 python=2.7
 
+  * 镜像设置
+
+    * conda
+
+      > conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ 
+      >
+      > conda config --set show_channel_urls yes 
+
+    * pip
+
+      > //临时使用
+      >
+      > pip install -i https://pypi.tuna.tsinghua.edu.cn/simple numpy 
+      >
+      > // C:\Users\xx\pip，新建文件pip.ini 内容如下：
+      >
+      > [global] 
+      >
+      > index-url = https://pypi.tuna.tsinghua.edu.cn/simple 
+
   * use env
 
     > //win
@@ -51,6 +71,20 @@ Summary:python base
   * update package
 
     > conda update package_name
+    
+  * 导入导出依赖
+
+    * conda
+
+      >  conda env export > environment.yaml  
+      >
+      >  conda env update -f=/path/to/environment.yml  
+
+    * pip
+
+      >  pip freeze > environment.txt   
+      >
+      >  pip install -r C:\Users\Microstrong\enviroment.txt  
 
 * beautifulsoup
 
