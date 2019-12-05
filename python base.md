@@ -203,4 +203,21 @@ Summary:python base
   > host = cf.get("Mysql-Database", "host")  # 获取[Mysql-Database]中host对应的值
   > print(host)
   
-  
+* python模块之codecs：codecs模块提供一个open方法，三个参数encoding, errors, buffering，这三个参数都是可选参数，但是对于应用来说，需要明确指定encoding的值，而errors和buffering使用默认值即 可
+
+  > import codecs
+  >
+  > #从文件读取数据
+  >
+  > data = codecs.open("2.txt", encoding="UTF-8")
+  >
+  > #一行一行读取数据
+  >
+  > data1 = data.readline(）
+  >
+  > print(data1)
+  >
+  > #读取完数据要把数据对象进行关闭，从内存里面释放出来
+  >
+  > data.close()
+
