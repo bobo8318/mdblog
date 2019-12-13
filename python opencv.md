@@ -319,4 +319,11 @@
   >
   > model_naive.fit(x_train, y_train)
 
-* 
+
+### 7.kmeans
+
+* 一些基础知识
+
+  > reshape(-1,3) # -1表示由计算机自己下决定行数，行数不直接指定
+  >
+  > np.array([X[labels==i].mean(axis=0) for i in range(n_clusters)])

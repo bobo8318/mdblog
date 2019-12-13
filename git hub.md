@@ -73,3 +73,22 @@ git add .
 git commit -m,message
 git push
 ```
+
+### .gitignore
+
+> /mtk 过滤整个文件夹
+> *.zip 过滤所有.zip文件
+> /mtk/do.c 过滤某个具体文件
+> !/mtk/one.txt 追踪（不过滤）某个具体文件
+>
+> 以斜杠“/”开头表示目录；
+> 以星号“*”通配多个字符；
+> 以问号“?”通配单个字符
+> 以方括号“[]”包含单个字符的匹配列表；
+> 以叹号“!”表示不忽略(跟踪)匹配到的文件或目录。
+
+* gitignore不起作用
+
+> git rm -r --cached .//删除本地缓存
+> git add .
+> git commit -m 'update .gitignore'
