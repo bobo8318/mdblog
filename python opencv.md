@@ -80,11 +80,40 @@
 
 * 数据预处理
 
+  * 特征选择
+
+    > pandas
+    >
+    > x = titanic[['pclass','age','sex']]
+    >
+    > y=titanic['survived']
+
+  * 特征转换
+
+    > from sklearn.feature_extraction import DictVectoriser# 字典特征提取器
+    > vec = DictVectorizer(sparse=False) *#sparse=False意思是不产生稀疏矩阵* 
+    >
+    > data = vec.fit_transform(x_train.to_dict(orient='record'))
+    >
+    > 1.  将字典数据结构抽和向量化
+    > 2.   类别类型特征借助原型特征名称采用0 1 二值方式进行向量化
+    > 3.   数值类型特征保持不变
+
   * 特征标准化
 
     > form sklearn import preprocessing
     >
     > X_scaled = preprocessing.scale(x)//每行均值等于或接近0
+    >
+    > 
+    >
+    > form sklearn.preprocessing  import StandardScaler
+    >
+    > ss = StandardScaler()
+    >
+    > x_train = ss.fit_transform(x_train)#均值为0 方差为1
+    >
+    > x_test = ss.transform(x_test)
 
   * 特征归一化 拥有单位范数的过程
 
@@ -99,6 +128,43 @@
     > 
 
   * 数据降维 主成分分析PCA
+
+  * 缺失值处理
+
+    > data = data.replace(to_replace='?', value=np.nan)#?替换为标准的缺失值
+    >
+    > data = data.dropna(how='any')#丢弃缺失值
+    >
+    > x['age'].fillna(x['age'].mean(), inplace=true)#pandas
+
+  * 数据分割
+
+    > from sklearn import model_selection as modsel
+    >
+    > X_train, X_test, y_train, y_test = modsel.train_test_split(boston.data, boston.target, test_size=0.1, random_state=42)
+
+  * 准确率判断
+
+    > from sklearn.metrics import classification_report
+    > y_true = [0, 1, 2, 2, 2]
+    > y_pred = [0, 0, 2, 2, 1]
+    > target_names = ['class 0', 'class 1', 'class 2']
+    > print(classification_report(y_true, y_pred, target_names=target_names))
+    >
+    >             precision    recall  f1-score   support
+    >     
+    >     class 0       0.50      1.00      0.67         1
+    >     class 1       0.00      0.00      0.00         1
+    >     class 2       1.00      0.67      0.80         3
+    >
+    > avg / total       0.70      0.60      0.61         5
+    >
+    >  当一个搜索引擎返回30个页面时，只有20页是相关的，而没有返回40个额外的相关页面，其精度为20/30 = 2/3，而其召回率为20/60 = 1/3 
+
+    * 准确性（accuracy）:  分对的样本数除以所有的样本数 
+    * 召回率（recall）: 结果如何完整 
+    * 精确率（precision）:  分为正例的示例中实际为正例的比例
+    * f1:  F1 值是精确度和召回率的调和平均值
 
 * 文本特征表示
 
