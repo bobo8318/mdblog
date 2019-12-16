@@ -1,6 +1,10 @@
 ### 1.创建机器学习数据集
 
-* 通过scikit-learn
+* 数据集
+
+  >  https://archive.ics.uci.edu/ml/machine-learning-databases/optdigits/  手写数据
+
+* 通过scikit-learn生成数据集
 
   > from sklearn import datasets
   >
