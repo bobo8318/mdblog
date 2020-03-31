@@ -17,3 +17,23 @@
   > centers表示类别数。
   > cluster_std表示每个类别的方差，例如我们希望生成2类数据，其中一类比另一类具有更大的方差，可以将cluster_std设置为[1.0,3.0]。
   >
+
+* sklearn 下载数据集
+
+  > from sklearn.datasets import fetch_20newsgroups #新闻数据
+  >
+  > news = fetch_20newsgroups(subset='all')
+  >
+  > train_X = news.data
+  >
+  > y= news.target
+  >
+  > 
+  >
+  > digits_data = datasets.load_digits()#手写数据
+  >
+  > digits.target.dtype:  int64
+  > digits.target.shape:  (1797,)
+  > digits.target.ndim:  1
+  >
+  > boston = datasets.load_boston()

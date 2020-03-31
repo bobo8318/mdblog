@@ -92,3 +92,70 @@ git push
 > git rm -r --cached .//删除本地缓存
 > git add .
 > git commit -m 'update .gitignore'
+
+* crlf转换问题 由于linux和windows换行符不同
+
+  > // 提交时转换为LF，检出时转换为CRLF
+  > git config --global core.autocrlf true
+  >
+  > // 提交时转换为LF，检出时不转换
+  > git config --global core.autocrlf input
+  >
+  > // 提交检出均不转换
+  > git config --global core.autocrlf false
+
+* 遇到问题-----git-----You have not concluded your merge (MERGE_HEAD exists) git拉取失败
+
+  > 有2个解决办法:
+  > 1.保留你本地的修改
+  >
+  > git merge --abortgit reset --merge
+  > 合并后记得一定要提交这个本地的合并然后在获取线上仓库
+  >
+  > git pull
+  >
+  > 2.down下线上代码版本,抛弃本地的修改
+  >
+  > git fetch --all
+  > git reset --hard origin/mastergit fetch
+
+* 修改远程ssh连接端口
+
+  > 编辑~/ .ssh / config文件。添加如下内容：
+  >
+  > Host example.com
+  >     Port 1234
+
+* 新建分支
+
+  > checkout dev -b
+
+* 合并分支
+
+  * > git merge –no-ff 可以保存你之前的分支历史。能够更好的查看 merge历史，以及branch 状态。
+  >
+    > git merge 则不会显示 feature，只保留单条分支记录。
+    
+  * 快进”(无冲突)
+  
+    > $ git checkout -b dev
+    >
+    > 
+    >
+    > $ git checkout master
+    >
+    > $ git merge dev
+    >
+    > $ git branch -d dev
+  
+  * 有冲突
+  
+    > $ git status 查看冲突文件
+    >
+    > 修改 后 
+    >
+    > $ git add .
+    >
+    > $ git commit -m 'test'
+    >
+    > $ git branch -d dev

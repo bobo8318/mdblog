@@ -123,3 +123,13 @@ Summary: docker 下部署 gitlab
   * The file will have its original line endings in your working directory.
   
     > git config --global core.autocrlf false
+    
+  * 已运行容器修改端口
+  
+    > 1、获得容器IP
+    >
+    > docker inspect `container_name` | grep IPAddress
+    >
+    > 2、iptable转发端口
+    >
+    > iptables -t nat -A  DOCKER -p tcp --dport 60000 -j DNAT --to-destination 172.17.0.2:8080

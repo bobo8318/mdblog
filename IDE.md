@@ -10,8 +10,7 @@ Summary:记录一些ide的配置、快捷键等内容
 * IDEA
 
   * 声明一个变量: "jack".var new Client().var
-
-  * null判断:  user.null
+* null判断:  user.null
   * 非null判断：user.notnull
   * nn判断：user.nn
   * for  循环：list.for
@@ -19,6 +18,7 @@ Summary:记录一些ide的配置、快捷键等内容
   * 取反：show.not
   * if 判断语句：a>0.if
   * return:  "result".return
+  * 
 
 * vscode
   * alt+ 多选

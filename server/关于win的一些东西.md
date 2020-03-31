@@ -88,3 +88,71 @@ Summary: 关于winserver的一些记录
       > RDP-Tcp 
       >
       > PortNumber 选择10进制　修改端口
+
+* 修改远程端口批处理
+
+  ```
+  @echo off 
+  
+  color f0 
+  
+  echo 修改远程桌面3389端口(支持Windows 2003 2008 2008R2 2012 2012R2 7 8 10 )
+  
+  echo 自动添加防火墙规则
+  
+  echo %date%   %time%
+  
+  echo    ARK set /p c= 请输入新的端口:
+  
+  if "%c%"=="" goto end
+  
+  goto edit:
+  
+  edit 
+  
+  netsh advfirewall firewall add rule name="Remote PortNumber" dir=in action=allow protocol=TCP localport="%c%"
+  
+  netsh advfirewall firewall add rule name="Remote PortNumber" dir=in action=allow protocol=TCP localport="%c%"
+  
+  reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp" /v "PortNumber" /t REG_DWORD /d "%c%" /f 
+  
+  reg add "HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp" /v "PortNumber" /t REG_DWORD /d "%c%" /f 
+  
+  echo 修改成功
+  
+  echo 重启后生效，按任意键重启
+  
+  pause 
+  
+  shutdown /r /t 0
+  
+  exit
+  
+  :end
+  
+  echo 修改失败
+  
+  pause
+  ```
+
+* 批处理命令相关内容
+
+    * 一般命令
+    
+        > @echo off //表示接下来的命令中（不包括本命令），只打印执行结果，不打印命令本身
+        >
+        > @echo on //表示接下来的命令中（不包括本命令），执行命令前会先把命令打印出来
+        >
+        > echo %cd%  显示当前路径
+        >
+        > 
+        
+    * 一个bat运行其他程序
+    
+        > start a.bat
+        >
+        > start "title" "D:\Software\IntelliJ IDEA 2018.3.4\bin\idea64.exe"
+        
+    * 延迟执行命令
+    
+        > ping [127.0.0.1](https://www.baidu.com/s?wd=127.0.0.1&tn=SE_PcZhidaonwhc_ngpagmjz&rsv_dl=gh_pc_zhidao) -n 3 >nul 利用ping命令 时间大约为 3 - 1 秒

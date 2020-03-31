@@ -33,6 +33,16 @@ Summary: springboot 知识记录
     }
     ```
 
+  * 注解方式获得自增id
+  
+    ```
+    @Insert("insert into tbl_user (name, age) values (#{name}, #{age})")
+    @Options(useGeneratedKeys=true, keyProperty="userId", keyColumn="id")
+    void insertUser(User user);
+    ```
+  
+    
+  
   * pagehelper :分页工具
 
 
@@ -188,3 +198,38 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
     ```
   
     
+
+
+
+
+
+* configuration
+
+  ```
+  
+  @Bean("primaryDataSource")
+  @Primary
+  @ConfigurationProperties("primary.datasource")
+  public DataSource buildPrimaryDataSource() {
+  	return DataSourceBuilder.create().build();
+  
+  }
+  
+  
+  @Component
+  @ConfigurationProperties("sharding.datasource")
+  public class DataSourceConfig {
+  	private String url;
+  	
+  	public String getUrl() {
+  		return url;
+  	}
+   
+  	public void setUrl(String url) {
+  		this.url = url;
+  	}
+  
+  }
+  ```
+
+  
