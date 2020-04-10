@@ -233,3 +233,13 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
   ```
 
   
+
+* tomcat容器无法启动
+
+  ```
+  NoSuchMethodError: javax.servlet.ServletContext.getVirtualServerName()Ljava/lang/String;
+  
+  搞定。我的问题其实不是jar冲突，准备说是ServletContext接口冲突 了。项目依赖了tomcat-embed-core-8.5.31.jar已经有ServletContext了，并且ServletContext接口确确实实定义了getVirtualServerName（）方法，只不过jvm先加载了servelt-api中的ServletContext类，后来在加载tomcat-embed-core-8.5.31中的ServletContext时发现它已经存在就不再加载了。
+  ```
+
+  

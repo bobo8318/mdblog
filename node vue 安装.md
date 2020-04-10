@@ -25,9 +25,13 @@ Summary:node vue 安装使用
 
   >  npm install -g webpack
   >
-  > npm install -g vue
+  >  npm install -g vue
   >
-  > npm install -g vue-cli
+  >  npm install -g vue-cli
+  >
+  >  // 本地安装
+  >
+  >  npm i jquery --save
 
 * 使用
 

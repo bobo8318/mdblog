@@ -221,6 +221,101 @@ Summary:python base
   >
   > data.close()
 
+* yield
+
+  ```
+  1.程序开始执行以后，因为foo函数中有yield关键字，所以foo函数并不会真的执行，而是先得到一个生成器g(相当于一个对象)
+  
+  2.直到调用next方法，foo函数正式开始执行，先执行foo函数中的print方法，然后进入while循环
+  
+  3.程序遇到yield关键字，然后把yield想想成return,return了一个4之后，程序停止，并没有执行赋值给res操作，此时next(g)语句执行完成，所以输出的前两行（第一个是while上面的print的结果,第二个是return出的结果）是执行print(next(g))的结果，
+  4.程序执行print("*"*20)，输出20个*
+  
+  5.又开始执行下面的print(next(g)),这个时候和上面那个差不多，不过不同的是，这个时候是从刚才那个next程序停止的地方开始执行的，也就是要执行res的赋值操作，这时候要注意，这个时候赋值操作的右边是没有值的（因为刚才那个是return出去了，并没有给赋值操作的左边传参数），所以这个时候res赋值是None,所以接着下面的输出就是res:None,
+  
+  6.程序会继续在while里执行，又一次碰到yield,这个时候同样return 出4，然后程序停止，print函数输出的4就是这次return出的4.
+  
+  
+  def foo():
+      print("starting...")
+      while True:
+          res = yield 4
+          print("res:",res)
+  g = foo()
+  print(next(g))
+  print("*"*20)
+  print(next(g))
+  //输出
+  starting...
+  4
+  ********************
+  res: None
+  4
+  
+  ```
+
+* 运算符重载
+
+  ```
+  class MyClass: #自定义一个类
+      def __init__(self, name , age): #定义该类的初始化函数
+          self.name = name #将传入的参数值赋值给成员交量
+          self.age = age
+      def __str__(self): #用于将值转化为字符串形式，等同于 str(obj)
+          return "name:"+self.name+";age:"+str(self.age)
+     
+      __repr__ = __str__ #转化为供解释器读取的形式
+     
+      def __lt__(self, record): #重载 self<record 运算符
+          if self.age < record.age:
+              return True
+          else:
+              return False
+     
+      def __add__(self, record): #重载 + 号运算符
+          return MyClass(self.name, self.age+record.age)
+          
+  myc = MyClass("Anna", 42) #实例化一个对象 Anna，并为其初始化
+  mycl = MyClass("Gary", 23) #实例化一个对象 Gary，并为其初始化
+  print(repr(myc)) #格式化对象 myc，
+  print(myc) #解释器读取对象 myc，调用 repr
+  print (str (myc)) #格式化对象 myc ，输出"name:Anna;age:42"
+  print(myc < mycl) #比较 myc<mycl 的结果，输出 False
+  print (myc+mycl) #进行两个 MyClass 对象的相加运算，输出 "name:Anna;age:65"
+  ```
+
+* 循环
+
+  ```
+//enumerate() 函数用于将一个可遍历的数据对象(如列表、元组或字符串)组合为一个索引序列，同时列出数据和数据下标.enumerate(sequence, [start=0]) start -- 下标起始位置。
+  a = [8, 23, 45, 12, 78]
+  for index, value in enumerate(a):
+  	print(index , value)
+  ```
+  
+* 判断
+
+  ```
+  x = [True, True, False]
+  	if any(x):
+  	  print '至少一个为真'
+  	if all(x):
+  	  print '全部为真'
+  	if any(x) and not all(x):
+  	  print '至少一个为真、一个为假'
+  	  
+  	  
+  // for正常结束会执行else break出去不会执行
+  for i in list1:
+      if 'nb' in i:
+          print("list1 里有nb人:"+i[0:2])
+          break
+  else:
+      print("list1里没有nb人！")
+  ```
+
+  
+
 * 定时任务
 
   * 循环sleep方式

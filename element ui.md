@@ -7,6 +7,17 @@ Summary: element ui 常用记录
 
 ### element ui
 
+* 安装使用
+
+  > npm i element-ui -S
+  
+* 引入
+
+  > //引入下面三行
+  > import ElementUI from 'element-ui';
+  > import 'element-ui/lib/theme-chalk/index.css';
+  > Vue.use(ElementUI);
+
 - 导航链接
 
   ```
@@ -127,7 +138,16 @@ Summary: element ui 常用记录
       </el-col>
     </el-form-item>
     <el-form-item label="即时配送" prop="delivery">
-      <el-switch v-model="ruleForm.delivery"></el-switch>
+    
+        <el-switch v-model="state"
+           active-value="1"
+           inactive-value="2">
+      </el-switch>
+    	
+      <el-switch v-model="ruleForm.delivery"  
+      :active-value="1"
+       :inactive-value="2"
+       @change=chang($event,state)></el-switch>
     </el-form-item>
     <el-form-item label="活动性质" prop="type">
       <el-checkbox-group v-model="ruleForm.type">

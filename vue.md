@@ -688,3 +688,7 @@ Summary: vue知识杂记
   >
   > arr.some(function(item, index, array){
   >
+
+* vue-cli关闭/禁用/使用ESLint语法检测功能
+
+    >  在项目的本目录下面config—index.js 文件夹中配置一下就可以禁用useEslint设为false
