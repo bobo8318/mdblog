@@ -115,3 +115,75 @@ Summary:linux知识记录
   
     
   
+* mariadb install(2020-04-16) https://www.cnblogs.com/yhongji/p/9783065.html
+
+  > yum install mariadb-server
+  >
+  > systemctl start mariadb  # 开启服务
+  > systemctl enable mariadb  # 设置为开机自启动服务
+  > mysql_secure_installation #首次安装需要进行数据库的配置，命令都和mysql的一样
+  
+  * init set
+  
+    ```
+    Enter current password for root (enter for none):  # 输入数据库超级管理员root的密码(注意不是系统root的密码)，第一次进入还没有设置密码则直接回车
+    
+    Set root password? [Y/n]  # 设置密码，y
+    
+    New password:  # 新密码
+    Re-enter new password:  # 再次输入密码
+    
+    Remove anonymous users? [Y/n]  # 移除匿名用户， y
+    
+    Disallow root login remotely? [Y/n]  # 拒绝root远程登录，n，不管y/n，都会拒绝root远程登录
+    
+    Remove test database and access to it? [Y/n]  # 删除test数据库，y：删除。n：不删除，数据库中会有一个test数据库，一般不需要
+    
+    Reload privilege tables now? [Y/n]  # 重新加载权限表，y。或者重启服务也许
+    ```
+  
+  * firewall set
+  
+    ```
+    [root@mini ~]# firewall-cmd --query-port=3306/tcp  # 查看3306端口是否开启
+    no
+    [root@mini ~]# firewall-cmd --zone=public --add-port=3306/tcp --permanent  # 开启3306端口
+    success
+    [root@mini ~]# firewall-cmd --reload  # 重启防火墙
+    success
+    [root@mini ~]# firewall-cmd --query-port=3306/tcp  # 查看3306端口是否开启
+    yes
+    ```
+  
+  * char set
+  
+    ```
+    1. /etc/my.cnf 文件 在  [mysqld]  标签下添加
+    init_connect='SET collation_connection = utf8_unicode_ci'
+    init_connect='SET NAMES utf8'
+    character-set-server=utf8
+    collation-server=utf8_unicode_ci
+    skip-character-set-client-handshake
+    
+    2. /etc/my.cnf.d/client.cnf 文件 在  [client]  标签下添加
+    default-character-set=utf8
+    
+    3.etc/my.cnf.d/mysql-clients.cnf  文件 在  [mysql]  标签下添加
+    default-character-set=utf8
+    
+    4.restart service
+    systemctl restart mariadb
+    ```
+  
+    
+  
+  * remote connect
+  
+    ```
+    use mysql;
+    select host, user from user;
+    update user set host='%' where host='mini';
+    flush privileges;
+    ```
+  
+    
