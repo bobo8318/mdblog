@@ -61,7 +61,9 @@ $ git config --global user.email  "abc@gmail.com" //填写自己的邮箱
 
 * git remote show origin 查看远程仓库地址
 
-* git remote set-url origin git@192.168.30.29:chenwei/em-data.com.cn.git 设置远程仓库地址
+* git remote set-url origin git@192.168.30.29:chenwei/em-data.com.cn.git 修改远程仓库地址
+
+* git remote add origin "xxx.git" 设置远程仓库地址
 
   
 
@@ -117,7 +119,9 @@ git push
   > 2.down下线上代码版本,抛弃本地的修改
   >
   > git fetch --all
-  > git reset --hard origin/mastergit fetch
+  > git reset --hard origin/master
+  >
+  > git fetch
 
 * 修改远程ssh连接端口
 
@@ -135,7 +139,7 @@ git push
   * > git merge –no-ff 可以保存你之前的分支历史。能够更好的查看 merge历史，以及branch 状态。
   >
     > git merge 则不会显示 feature，只保留单条分支记录。
-    
+  
   * 快进”(无冲突)
   
     > $ git checkout -b dev
@@ -159,3 +163,13 @@ git push
     > $ git commit -m 'test'
     >
     > $ git branch -d dev
+  
+* 常见问题
+
+  * git remote set-url origin "xxx.git" 报错 No such remote 'origin'
+
+    > git remote add origin "xxx.git"
+
+  * Updates were rejected because the remote contains work that you do
+  
+    > push 之前 先 git pull origin master 即可

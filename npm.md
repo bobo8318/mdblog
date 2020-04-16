@@ -13,9 +13,9 @@
   >
   > cnpm install
   >
-  > 
+  > install 可 简写为i
   >
-  > npm install module_name -S  即  npm install module_name --save  写入dependencies
+  > npm install module_name -S  即  npm install module_name --save  写入dependencies 
   >
   > npm install module_name -D  即  npm install module_name --save-dev 写入devDependencies
   >
