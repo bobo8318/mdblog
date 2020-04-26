@@ -173,3 +173,11 @@ git push
   * Updates were rejected because the remote contains work that you do
   
     > push 之前 先 git pull origin master 即可
+  
+  * git clone提示失败 fatal: The remote end hung up unexpectedlReceiviny00 KiB/s fatal: early EOF(328/529),
+  
+    > 运行：git config –global http.postBuffer 1048576000 即可。
+    >
+    > 如果不行，试试：
+    >
+    > git config --global core.compression 9
