@@ -72,6 +72,12 @@ Summary:python base
 
     > conda update package_name
     
+  * 清除缓存
+
+    > conda clean -p // 没有用的包
+    >
+    > conda clean -t  //tar
+
   * 导入导出依赖
 
     * conda

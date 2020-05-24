@@ -10,12 +10,40 @@
 
 * create env
 
-  > conda create -n Python3CV python=3.6--file requirements.txt
-
+  > conda install -c https://conda.binstar.org/menpo opencv
+>
+  > pip install opencv-python
+  >
+  > cv /Users/openui/Documents/gitwb/opencv-machine-learning
+>
+  > conda create -n Python3CV python=3.6 --file requirements.txt
+  >
+  > import cv2
+  >
+  > print(cv2.__version__)
+  >
+  > http://www.mamicode.com/info-detail-2200546.html?__cf_chl_jschl_tk__=28f6631f38b0ca360203696ccbe0afef5d969354-1589977003-0-AU2YD_KbkoaXX4Y7HnHD-vY4ojaR1AkHO6P2Rue48vmLnsc1agi7yXTrhM7a6jMXktoEpyclPTbIEW8f7i3rL6DVE3zK4DcsGatMXJaUIQbm9k_bth9Lqkip6frbeiH7SS3Ry2LI4G57djL_62CwZ5SjTTRvO90Mayg_qCQe6sabz36tTumUKi9vSmLBUNyLgLcJFN0cInW-P1a-0terDmJyKe5pVdXJcgxsOJrZkoshwz7HZV-HBnFTe7jjKqyjQCKszKHsmVutjVi3nfEGaqCq0O32bTdnukIZaFa3PT4h57P7rVQytrXQsdkCVCp0Ug
+  >
+  > https://www.cnblogs.com/zuoruining/p/8203162.html
+  
+  * link
+  
+    > /Users/openui/opt/anaconda3/envs/python38cv/lib/python3.8/site-packages/cv2/cv2.cpython-38-darwin.so
+    >
+    > 
+    >
+    > /usr/local/Cellar/opencv/4.3.0/lib/python3.8/site-packages/cv2/python-3.8/cv2.cpython-38-darwin.so
+    >
+    > 
+    >
+    > cd /Users/openui/opt/anaconda3/envs/python38cv/lib/python3.8/site-packages  
+    >
+    > ln -s /usr/local/Cellar/opencv/4.3.0/lib/python3.8/site-packages/cv2/python-3.8/cv2.cpython-38-darwin.so  cv2.so 
+  
     ```
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/msys2/ conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge/
     conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/ conda config --set show_channel_urls yes
-
+  
     //C:\Users\My\.condarc
     channels:
       - https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free/
@@ -152,7 +180,7 @@
     > print(classification_report(y_true, y_pred, target_names=target_names))
     >
     >             precision    recall  f1-score   support
-    >     
+    >    
     >     class 0       0.50      1.00      0.67         1
     >     class 1       0.00      0.00      0.00         1
     >     class 2       1.00      0.67      0.80         3

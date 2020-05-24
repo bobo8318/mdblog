@@ -187,3 +187,25 @@ Summary:linux知识记录
     ```
   
     
+
+* Disk 
+
+  *  查看磁盘使用率
+
+    > df -h
+
+  * find local docker dir
+
+    > sudo docker info | grep "Docker Root Dir"
+
+  * move docker file
+
+    > service docker stop
+    >
+    > mv /var/libdocker /data/docker
+    >
+    > ln -s /data/docker /var/lib/docker
+
+  * check dir space
+
+    > sudo du -h -x --max-depth=1

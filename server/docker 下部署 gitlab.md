@@ -132,4 +132,8 @@ Summary: docker 下部署 gitlab
     >
     > 2、iptable转发端口
     >
-    > iptables -t nat -A  DOCKER -p tcp --dport 60000 -j DNAT --to-destination 172.17.0.2:8080
+    > iptables -t nat -A  DOCKER -p tcp --dport 60000 -j DNAT --to-destination 172.17.0.2:22
+    >
+    > 客户端需要在～/.ssh/config 文件中添加 Host 14.152.10.7 Port 60000
+    >
+    > 然后需要重新生成秘要上传
