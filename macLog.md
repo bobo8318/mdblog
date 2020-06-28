@@ -49,13 +49,13 @@
   >
   > sudo nginx // run nginx
   >
-  > sbin/nginx  启动
+  > sudo nginx  启动
   >
-  > sbin/nginx -s reload 重新加载
+  > sudo nginx -s reload 重新加载
   >
-  > sbin/nginx -s stop 停止，无日志
+  > sudo nginx -s stop 停止，无日志
   >
-  > sbin/nginx -s quit 停止，有日志 
+  > sudo nginx -s quit 停止，有日志 
   >
   > 
   >
@@ -66,6 +66,21 @@
   > nginx -t 验证配置文件
   >
   > /usr/local/etc/nginx/nginx.conf 配置文件位置
+  >
+  > 
+  >
+  > Mac下Nginx访问目录，出现403 Forbidden
+  >
+  > 默认 #user nobody
+  >
+  > 取消注释，修改为 有权限的用户：
+  >
+  > user 【用户名】 【用户组】 
+  >
+  > groups // 查看当前用户所属组
+  > groups user_name // 查看指定用户所属组
+  >
+  > 查看当前用户的用户名就很好记了：whoami
 
 * install maven
 
@@ -253,6 +268,8 @@
   > lsof | less
   >
   > lsof -i:3000
+  >
+  > kill -9 1602
 
 * shell
 
@@ -328,3 +345,10 @@ https://apple.stackexchange.com/questions/280099/apache-on-macos-sierra-ah00557-
 ```
 
 * vscode+
+
+* sublime
+
+  > sudo ln -s /Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl /usr/bin/sim
+  >
+  > sim /private/etc/hosts
+

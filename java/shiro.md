@@ -54,7 +54,7 @@
   	
   	@Bean(name="")
   	public SecurityManager securityManager(@Qualifier("userRealm") UserRealm realm){
-  		DefatultWebSecurityManager manager = new DefatultWebSecurityManager();
+  		DefaultWebSecurityManager manager = new DefaultWebSecurityManager();
   		manager.setRealm(realm)
   		return manager;
   	}
@@ -144,6 +144,63 @@
     >
     > }
   
+  * @RequiresPermissions("user:add")
+  
+    ```
+    /**
+    * 注解支持
+    */
+    
+    @Bean
+    @ConditionalOnMissingBean
+    public DefaultAdvisorAutoProxyCreator defaultAdvisorAutoProxyCreator(){
+      DefaultAdvisorAutoProxyCreator aas = new DefaultAdvisorAutoProxyCreator();
+      aas.setProxyTargetClass(true);
+      return aas;
+    }
+    
+    @Bean
+    @ConditionalOnMissingBean
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(@Qualifier("securityManager") SecurityManager securityManager){
+      AuthorizationAttributeSourceAdvisor aas = new AuthorizationAttributeSourceAdvisor();
+      aas.setSecurityManager(securityManager);
+      return aas;
+    }
+    ```
+  
+    
+  
+  * md5 encode password + salt
+  
+    ```
+  //save md5 password
+    String password = admin.getPassword();
+    String salt = RandomStringUtils.randomNumeric(6,8);
+    Md5Hash md5hash = new Md5Hash(password, salt);//encode 1
+    admin.setPassword(md5hash.toString());
+    
+  //config macher bean
+    @Bean //md5 encode pwd ma
+  public CredentialsMatcher credentialsMatcher(){
+      HashedCredentialsMatcher macher = new HashedCredentialsMatcher();
+      macher.setHashAlgorithmName("md5");
+      return  macher;
+    }
+    
+    // shiroconfig.java use when realm doGetAuthenticationInfo
+  
+     #in get realm methon
+  UserRealm realm =  new UserRealm();
+    //realm.setCredentialsMatcher(credentialsMatcher());
+    return realm;
+    
+     #in doGetAuthenticationInfo method
+    ByteSource bsSalt = new SimpleByteSource(user.getSalt());
+  SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(user, user.getUserpwd(),bsSalt,getName());
+    ```
+    
+    
+    
   * thymeleaf & shiro
   
     * impoty thymeleaf
