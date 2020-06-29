@@ -87,7 +87,8 @@ Address: https://mp.baomidou.com/guide/quick-start.html
     
         @TableId(value = "id",type = IdType.AUTO)//指定自增策略
         private int id;
-    
+    		
+    		@TableField()
         private String measure_name;
     
     
@@ -282,6 +283,29 @@ Address: https://mp.baomidou.com/guide/quick-start.html
   wrapper.orderByDesc("id")
   
   
+  ```
+
+* @Results用法
+
+  ```
+  @Select({"select id, name, class_id from my_student"})
+  @Results(id="studentMap", value={
+      @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+      @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+      @Result(column="class_id ", property="myClass", javaType=MyClass.class,
+          one=@One(select="com.my.mybatis.mapper.MyClassMapper.selectById"))
+  })
+  List<Student> selectAllAndClassMsg();
+  
+  @Select({"select id, name, class_id from my_student"})
+  @Results(id="studentMap", value={
+      @Result(column="id", property="id", jdbcType=JdbcType.INTEGER, id=true),
+      @Result(column="name", property="name", jdbcType=JdbcType.VARCHAR),
+      @Result(column="class_id ", property="classId", jdbcType=JdbcType.INTEGER),
+      @Result(column="id", property="gradeList", javaType=List.class,
+          many=@Many(select="com.my.mybatis.mapper.GradeMapper.selectByStudentId"))
+  })
+  List<Student> selectAllAndGrade();
   ```
 
   
